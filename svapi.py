@@ -1,4 +1,5 @@
 import requests
+import json
 
 # USER
 def GetUserDataFromSVID(SVID):
@@ -6,7 +7,7 @@ def GetUserDataFromSVID(SVID):
     if "Could not find" in result:
         raise Exception("GetUser: Param(s) are invalid.")
     else:
-        return  result
+        return json.loads(result)
 
 def GetUsernameFromSVID(SVID):
     result = requests.get("https://api.spookvooper.com/User/GetUsername?SVID={}".format(SVID)).text
@@ -62,14 +63,14 @@ def GetDiscordRolesFromSVID(SVID):
     if "Could not find" in result:
         raise Exception("GetDiscordRolesFromSVID: Param(s) are invalid.")
     else:
-        return result
+        return json.loads(result)
 
 def GetDaysSinceLastMoveFromSVID(SVID):
     result = requests.get("https://api.spookvooper.com/User/GetDaysSinceLastMove?SVID={}".format(SVID)).text
     if "Could not find" in result:
         raise Exception("GetDaysSinceLastMoveFromSVID: Param(s) are invalid.")
     else:
-        return result
+        return json.loads(result)
 
 # GROUP
 def DoesGroupExistFromSVID(SVID):
@@ -84,7 +85,7 @@ def GetGroupMembersFromSVID(SVID):
     if "Could not find" in result:
         raise Exception("GetGroupMembersFromSVID: Param(s) are invalid.")
     else:
-        return result
+        return json.loads(result)
 
 def HasGroupPermissionFromSVIDandUserSVIDandPermission(SVID, userSVID, permission):
     result = requests.get("https://api.spookvooper.com/Group/HasGroupPermission?svid={}&userSVID={}&permission={}".format(SVID, userSVID, permission)).text
@@ -98,14 +99,14 @@ def GetSVIDFromGroupname(groupname):
     if "Could not find" in result:
         raise Exception("GetSVIDFromGroupname: Param(s) are invalid.")
     else:
-        return result
+        return json.loads(result)
 
 def GetGroupnameFromSVID(SVID):
     result = requests.get("https://api.spookvooper.com/Group/GetName?svid={}".format(SVID)).text
     if "Could not find" in result:
         raise Exception("GetName: Param(s) are invalid.")
     else:
-        return result
+        return json.loads(result)
 
 # ECO
 def GetBalanceFromSVID(SVID):
@@ -120,7 +121,7 @@ def SendTransactionByIDs(sender_svid, receiver_svid, amount, auth, detail):
     if "Could not find" in result:
         raise Exception("SendTransactionByIDs: Param(s) are invalid.")
     else:
-        return result
+        return json.loads(result)
 
 def GetStockValueFromTicker(ticker):
     result = requests.get("https://api.spookvooper.com/Eco/GetStockValueFromTicker?ticker={}".format(ticker)).text
@@ -136,28 +137,28 @@ def GetStockHistory(ticker, time_type, count, interval):
     if "Could not find" in result:
         raise Exception("GetStockHistory: Param(s) are invalid.")
     else:
-        return result
+        return json.loads(result)
 
 def SubmitStockBuy(ticker, count, price, accountid, auth):
     result = requests.get("https://api.spookvooper.com/Eco/SubmitStockBuy?ticker={}&count={}&price={}&accountid={}&auth={}".format(ticker, count, price, accountid, auth)).text
     if "Could not find" in result:
         raise Exception("SubmitStockBuy: Param(s) are invalid.")
     else:
-        return result
+        return json.loads(result)
 
 def SubmitStockSell(ticker, count, price, accountid, auth):
     result = requests.get("https://api.spookvooper.com/Eco/SubmitStockSell?ticker={}&count={}&price={}&accountid={}&auth={}".format(ticker, count, price, accountid, auth)).text
     if "Could not find" in result:
         raise Exception("SubmitStockSell: Param(s) are invalid.")
     else:
-        return result
+        return json.loads(result)
 
 def CancelOrder(orderid, accountid, auth):
     result = requests.get("https://api.spookvooper.com/Eco/CancelOrder?orderid={}&accountid={}&auth={}".format(orderid, accountid, auth)).text
     if "Could not find" in result:
         raise Exception("CancelOrder: Param(s) are invalid.")
     else:
-        return result
+        return json.loads(result)
 
 def GetStockBuyPrice(ticker):
     result = requests.get("https://api.spookvooper.com/Eco/GetStockBuyPrice?ticker={}".format(ticker)).text
@@ -171,39 +172,39 @@ def GetQueueInfo(ticker, action_type):
     if "Could not find" in result:
         raise Exception("GetQueueInfo: Param(s) are invalid.")
     else:
-        return result
+        return json.loads(result)
 
 def GetUserStockOffers(ticker, svid):
     result = requests.get("https://api.spookvooper.com/Eco/GetUserStockOffers?ticker={}&svid={}".format(ticker, svid)).text
     if "Could not find" in result:
         raise Exception("GetUserStockOffers: Param(s) are invalid.")
     else:
-        return result
+        return json.loads(result)
 
 def GetDistrictWealth(svid):
     result = requests.get("https://api.spookvooper.com/Eco/GetDistrictWealth?id={}".format(svid)).text
     if "Could not find" in result:
         raise Exception("GetDistrictWealth: Param(s) are invalid.")
     else:
-        return result
+        return json.loads(result)
 
 def GetDistrictUserWealth(svid):
     result = requests.get("https://api.spookvooper.com/Eco/GetDistrictUserWealth?id={}".format(svid)).text
     if "Could not find" in result:
         raise Exception("GetDistrictUserWealth: Param(s) are invalid.")
     else:
-        return result
+        return json.loads(result)
 
 def GetDistrictGroupWealth(svid):
     result = requests.get("https://api.spookvooper.com/Eco/GetDistrictGroupWealth?id={}".format(svid)).text
     if "Could not find" in result:
         raise Exception("GetDistrictGroupWealth: Param(s) are invalid.")
     else:
-        return result
+        return json.loads(result)
 
 def GetOwnerData(ticker):
     result = requests.get("https://api.spookvooper.com/Eco/GetOwnerData?ticker={}".format(ticker)).text
     if "Could not find" in result:
         raise Exception("GetOwnerData: Param(s) are invalid.")
     else:
-        return result
+        return json.loads(result)
