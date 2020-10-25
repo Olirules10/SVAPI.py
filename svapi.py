@@ -24,7 +24,7 @@ def GetSVIDFromUsername(username):
         return  result
 
 def GetUsernameFromDiscord(discordid):
-    result = requests.get("https://api.spookvooper.com/User/GetUsernameFromDiscord?username={}".format(discordid)).text
+    result = requests.get("https://api.spookvooper.com/User/GetUsernameFromDiscord?discordid={}".format(discordid)).text
     if "Could not find" in result:
         raise Exception("GetUsernameFromDiscord: Param(s) are invalid.")
     else:
